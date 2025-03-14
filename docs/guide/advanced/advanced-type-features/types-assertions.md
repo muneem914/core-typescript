@@ -1,3 +1,7 @@
+---
+outline: deep
+---
+
 # Type Assertions
 
 Type Assertion in TypeScript is a way to tell the compiler "**Trust me, I know the type of this value better than you.**"  

@@ -12,10 +12,10 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/
+      link: /guide/core-typescript
     - theme: alt
       text: GitHub
-      link: https://github.com/muneem914
+      link: https://github.com/muneem914/core-typescript
 
 # features:
 #   - title: Feature A

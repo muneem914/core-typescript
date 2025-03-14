@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+outline: deep
 ---
 
 # Advanced Types

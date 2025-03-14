@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+outline: deep
 ---
 
 # TypeScript with Node.js

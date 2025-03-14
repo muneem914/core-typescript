@@ -1,5 +1,5 @@
 ---
-sidebar_position: 8
+outline: deep
 ---
 
 # Performance and Optimization

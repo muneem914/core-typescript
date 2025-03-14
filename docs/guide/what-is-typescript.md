@@ -2,4 +2,4 @@
 outline: deep
 ---
 
-# Type Manipulation
+# What is typescript
