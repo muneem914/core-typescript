@@ -72,7 +72,7 @@ document.getElementById("calculateBtn")?.addEventListener("click", calculate);
 - We use `await` to wait until the module is loaded before calling `add()` and `subtract()`.
 - **Advantage:** The app loads faster because unnecessary code is not included in the initial load.
 
-::: details _Why it is called lazy-loading ?_
+::: details *Why it is called lazy-loading ?*
 The term "**lazy-loading**" comes from the idea of **delaying work until it’s absolutely needed** – like a "lazy" person who avoids doing something until they **have to**.
 
 It affects on:
