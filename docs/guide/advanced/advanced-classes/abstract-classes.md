@@ -2,19 +2,17 @@
 outline: deep
 ---
 
-<!-- # Classes
- -->
-
-
 # Abstract Classes
+
 Abstract classes are the base classes that cannot be instantiated directly; in simple term you cannot use an abstract class directly. They act as a blueprints for derived or sub-classes. Abstract classes can define both concrete (implemented) methods and abstract (unimplemented) methods. Subclasses that extends an abstract class, must implement all of its abstract methods; it means, when you have to define subclass, which is derived from abstract class, you must implement abstract methods properly.
 
 In simple term, abstract class in TypeScript serves as a blueprint for other classes. It's like a partially built structure where you can define some common features and behaviors, but you can't live in it directly. You need to build upon it to create a functional house.
 
 **Key Characteristics:**
+
 - **Cannot be instantiated**: You can't create an object directly from an abstract class. It's meant to be extended with sub-classes.
-- **Blueprint for subclasses:** It acts as a template for other classes to inherit from.   
-- **Can contain concrete methods**: It can have methods with full implementations, which are then inherited by its subclasses.   
+- **Blueprint for subclasses:** It acts as a template for other classes to inherit from.
+- **Can contain concrete methods**: It can have methods with full implementations, which are then inherited by its subclasses.
 - **Can contain abstract methods**: It can define methods without any implementation (abstract methods). Subclasses that extend the abstract class must provide implementations for all these abstract methods.
 
 Abstract classes are used to establish a common structure and behavior for a group of related classes. They enforce a contract, that ensures all derived classes will share certain functionalities and behavior while specific implementations in each subclass are required.
@@ -24,15 +22,16 @@ Imagine you’re an architect who creates a blueprint for a building. This bluep
 
 - **Abstract Class**: The blueprint (defines common structure and rules).
 - **Concrete Class**: The actual building (instantiated and used in real life).
-:::
+  :::
 
 ## Basic Abstract Class
+
 Imagine you’re designing a blueprint for vehicles. Every vehicle should have a method to start the engine, but the way each vehicle does that might differ.
-```ts 
+
+```ts
 // Defining an abstract class "Vehicle" with an abstract method "startEngine" and concrete method "move"
 abstract class Vehicle {
-
-//  A concrete method
+  //  A concrete method
   move(): void {
     console.log("The vehicle is moving.");
   }
@@ -54,16 +53,18 @@ class Motorcycle extends Vehicle {
   }
 }
 
-// Usage: 
+// Usage:
 const myCar = new Car();
 myCar.startEngine(); // Output: Car engine started with a key turn.
-myCar.move();        // Output: The vehicle is moving.
+myCar.move(); // Output: The vehicle is moving.
 
 const myBike = new Motorcycle();
 myBike.startEngine(); // Output: Motorcycle engine started with a button press.
-myBike.move();        // Output: The vehicle is moving.
+myBike.move(); // Output: The vehicle is moving.
 ```
+
 ### How It Works
+
 - `Vehicle` is an `abstract class`, means it cannot be instantiated or used directly. It contains both concrete and abstract methods.
 - `move()` is a concrete method, which have complete definition or method body, but it can be overridden by inherited class; or you can say its a common behavior shared by all vehicle providing a default implementation that can be overridden by subclasses. <Badge type="danger" text="Note:" /> If its not overridden, it will be act as a default behavior of all sub-classes which are inherited from `abstract class Vehicle`.
 - `startEngine()` is an `abstract method`, which means it has no method body or it has no implementation. So it requires subclasses to provide their own implementation.
@@ -72,7 +73,9 @@ myBike.move();        // Output: The vehicle is moving.
 - This is how Abstract classes enforce a contract, which ensures subclasses implementation with necessary methods.
 
 ## Abstract class with a `constructor`
+
 This is similar to above example but this time, with a `constructor`, to initialize common properties (`brand` and `model`)
+
 ```ts
 // Abstract class "Vehicle" with a constructor to set common properties
 abstract class Vehicle {
@@ -103,15 +106,16 @@ class Motorcycle extends Vehicle {
 
 // Usage:
 const myCar = new Car("Toyota", "Corolla");
-myCar.displayInfo();   // Output: Vehicle: Toyota Corolla
-myCar.startEngine();   // Output: The car engine starts with a roar!
+myCar.displayInfo(); // Output: Vehicle: Toyota Corolla
+myCar.startEngine(); // Output: The car engine starts with a roar!
 
-const myMotorcycle = new Motorcycle("Harley-Davidson", "Sportster");
-myMotorcycle.displayInfo();   // Output: Vehicle: Harley-Davidson Sportster
-myMotorcycle.startEngine();   // Output: The motorcycle engine starts with a vroom!
+const myMotorcycle = new Motorcycle("Suzuki", "Sportster");
+myMotorcycle.displayInfo(); // Output: Vehicle: Suzuki Sportster
+myMotorcycle.startEngine(); // Output: The motorcycle engine starts with a vroom!
 ```
 
-## Abstract Class with Both Abstract and Concrete Members 
+## Abstract Class with Both Abstract and Concrete Members
+
 Here’s a more complex scenario where the abstract class provides a default behavior but forces derived classes to provide specific details.
 
 ```ts
@@ -154,15 +158,17 @@ console.log(emp1.calculateSalary()); // Output: 5000
 emp2.work(); // Output: Bob is working.
 console.log(emp2.calculateSalary()); // Output: 1600
 ```
+
 ### How It Works
+
 - `Employee` is an `abstract class` with a constructor, a concrete `work()` method, and an abstract `calculateSalary()` method.
 - `FullTimeEmployee` and `PartTimeEmployee` extend `Employee` and provide their own implementations for `calculateSalary()`.
 - `emp1` and `emp2` are instances of the concrete classes, demonstrating polymorphism through the `calculateSalary()` method.
 - The `work()` method is inherited and shared by both employee types.
 - Abstract classes define a common structure and enforce implementation of specific methods in subclasses.
 
-::: details *How `super` works ?*
-The keyword `super` in a class plays a crucial role in object-oriented programming, particularly in the context of inheritance. Basically it used within a class (specifically in a subclass or derived class) to refer its parent class. It allows us to access and call methods, constructors, and properties of the parent class from within the subclass.   
+::: details _How `super` works ?_
+The keyword `super` in a class plays a crucial role in object-oriented programming, particularly in the context of inheritance. Basically it used within a class (specifically in a subclass or derived class) to refer its parent class. It allows us to access and call methods, constructors, and properties of the parent class from within the subclass.
 
 **Importance of `super`:**
 
@@ -173,7 +179,9 @@ The keyword `super` in a class plays a crucial role in object-oriented programmi
 :::
 
 ## Abstract Classes with Template Method Pattern
+
 The **Template Method Pattern** is a design pattern where an abstract class defines the skeleton of an algorithm, deferring some steps to subclasses. This pattern allows you to vary parts of an algorithm without changing its structure.
+
 ```ts
 // Defining abstract class "DataProcessor" with the template method "processData"
 abstract class DataProcessor {
@@ -258,21 +266,14 @@ This approach ensures every car built follows the same quality process while all
 :::
 
 ## Key Takeaways
-| Aspect             | Abstract Classes                                                                 |
-|--------------------|-----------------------------------------------------------------------------------|
-| Purpose            | Provide a common blueprint with shared behavior.                                 |
-| Instantiation      | Cannot instantiate directly; must be subclassed.                                |
-| Abstract Methods   | Must be implemented in derived classes.                                           |
-| Use Cases          | When you need common functionality plus enforced contracts (e.g., vehicles, data processors). |
 
-# Static Members
+| Aspect           | Abstract Classes                                                                              |
+| ---------------- | --------------------------------------------------------------------------------------------- |
+| Purpose          | Provide a common blueprint with shared behavior.                                              |
+| Instantiation    | Cannot instantiate directly; must be subclassed.                                              |
+| Abstract Methods | Must be implemented in derived classes.                                                       |
+| Use Cases        | When you need common functionality plus enforced contracts (e.g., vehicles, data processors). |
 
-::: tip Analogy
 
-:::
-
-# Method Overloading
-
-::: tip AnalogyI
-
-:::
+> [!NOTE]
+> If you are facing issues in understanding classes then you can visit [Basic Classes](/guide/basics/classes) first.

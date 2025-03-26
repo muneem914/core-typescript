@@ -9,8 +9,10 @@ TypeScript lets you combine or mix types, kind of like mixing ingredients to cre
 ### Union Types (`|`)
 A union type allows a variable to hold values of multiple types. It’s like saying, "This variable can be either type A **or** type B." (each of these types as the *union’s members.*)  
 
-***Analogy:** Think of a vending machine that can dispense both snacks and drinks. The machine can give you either a snack **or** a drink, but not both at the same time.*  
-```ts title="TypeScript"
+::: tip Analogy
+ Think of a vending machine that can dispense both snacks and drinks. The machine can give you either a snack **or** a drink, but not both at the same time.*
+ :::
+```ts
 let item: string | number;
 
 item = "Coke"; // Valid
@@ -22,21 +24,24 @@ console.log(item); // Output: 123 (last assigned value)
 Here, the vertical bar (`|`) is to separate each type, so number | string is the type of a value that can be a number or a string.  
 
 **Another example:**
-```ts title="TypeScript"
+```ts
 function serveDrink(drink: "tea" | "coffee") {
   console.log(`Here’s your ${drink}!`);
 }
 
 serveDrink("tea");      // Output: Here’s your tea!
 serveDrink("coffee");   // Output: Here’s your coffee!
-// serveDrink("juice"); // ❌ Error: "juice" is not a valid drink
+// serveDrink("juice"); // Error: "juice" is not a valid drink
 ```
 
 ### Intersection Types (`&`)
 An intersection type combines multiple types into one. This allows to add together *existing types* to get a *single type* that has all the features from both. It’s like saying, "This variable must satisfy both type A **and** type B." (each of these types as the *union’s members.*)  
 
-***Analogy:** Think of a hybrid car. It’s both an electric car **and** a gasoline car. It must have features of both types.*  
-```ts title="TypeScript"
+::: tip Analogy
+Think of a hybrid car. It’s both an electric car **and** a gasoline car. It must have features of both types.
+:::
+
+```ts
 type Electric = { battery: number };
 type Gasoline = { fuel: number };
 
@@ -54,9 +59,10 @@ Here, `type HybridCar = Electric & Gasoline;` combines `Electric` **and** `Gasol
 ## Literal Types and Type Aliases
 ### Literal Types
 Literal types allow you to specify exact values a variable can hold. It’s like saying, "This variable can only be this specific value."  
-
-***Analogy:** Think of a traffic light. It can only be red, yellow, or green. It cannot be any other color.*  
-```ts title="TypeScript"
+::: tip Analogy
+Think of a traffic light. It can only be red, yellow, or green. It cannot be any other color.
+:::  
+```ts
 let trafficLight: "red" | "yellow" | "green";
 
 trafficLight = "red"; // Valid
@@ -65,7 +71,7 @@ trafficLight = "red"; // Valid
 console.log(trafficLight); // Output: red
 ```
 **Another example:**
-```ts title="TypeScript"
+```ts
 type UserStatus = "active" | "inactive"; // Variable can only be "active" or "inactive"
 
 let userStatus: UserStatus = "active";  // Valid
@@ -80,13 +86,15 @@ A type alias in TypeScript allows you to create a custom name for a type. It mak
 - They do not create new types, but act as shortcuts for existing ones. 
 - They improve readability and reduce duplication. It lets the developer maintain DRY (Don't Repeat Yourself) principle.
 
-***Analogy:** Think of a type alias like a nickname. Instead of repeating a long, complex phrase, you can give it a short and simple name. For example: A person’s full name (e.g., "John Doe"). You can create a nickname (e.g., "Johnny") to refer to them more easily.*  
-*Or, Instead of saying "A person who is highly skilled at programming and software development", you can simply say "Software Engineer". Just like this, type aliases works.*  
+::: tip Analogy
+Think of a type alias like a nickname. Instead of repeating a long, complex phrase, you can give it a short and simple name. For example: A person’s full name (e.g., "John Doe"). You can create a nickname (e.g., "Johnny") to refer to them more easily.*  
+*Or, Instead of saying "A person who is highly skilled at programming and software development", you can simply say "Software Engineer". Just like this, type aliases works.* 
+::: 
 
 **For example:**
 
-**Type Alias for an Object**
-```ts title="TypeScript"
+#### Type Alias for an Object
+```ts
 // Defining a type alias for a user object
 type User = {
   name: string;
@@ -110,22 +118,22 @@ const user2: User = {
 ```
 Instead of writing the object structure `{ name: string; age: number; isAdmin: boolean; }` multiple times, we define it once as `User`.
 
-**Type Alias for a Union Type**
-```ts title="TypeScript"
+#### Type Alias for a Union Type
+```ts
 // Defining a type alias for specific string values
 type Status = "success" | "error" | "loading";
 
 let apiStatus: Status;
 
-apiStatus = "success";  // ✅ Valid
-apiStatus = "loading";  // ✅ Valid
-apiStatus = "error";    // ✅ Valid
-apiStatus = "failed";   // ❌ Error: "failed" is not part of the Status type
+apiStatus = "success";  // Valid
+apiStatus = "loading";  // Valid
+apiStatus = "error";    // Valid
+apiStatus = "failed";   // Error: "failed" is not part of the Status type
 ```
 Instead of writing `"success" | "error" | "loading"` multiple times, we define it once as `Status`.
 
-**Type Alias for Function Signatures**
-```ts title="TypeScript"
+#### Type Alias for Function Signatures
+```ts
 // Defining a type alias for a function signature
 type AddFunction = (a: number, b: number) => number;
 
@@ -135,7 +143,7 @@ console.log(add(5, 3)); // Output: 8
 ```
 If you have multiple functions following the same signature, you don’t have to rewrite `(a: number, b: number) => number` every time.
 
-#### When to Use Type Aliases?
+### When to Use Type Aliases?
 - Defining complex object types
 - Creating union types
 - Writing function signatures
@@ -148,8 +156,7 @@ Type Narrowing is the process of refining a broader type to a more specific type
 ### What are Type Guards?
 Type Guards are techniques used in TypeScript to ensure that a variable has a specific type before performing operations on it. They are used to safely narrow the types.  
 
-***Analogy:***  
-
+::: tip Analogy
 Imagine you work as a security officer at an airport. Your job is to check passengers' IDs and passports to determine if they are:
 
 - A citizen (ID card holder)
@@ -157,14 +164,14 @@ Imagine you work as a security officer at an airport. Your job is to check passe
 - A VIP (Special access badge holder)  
 
 Each type of traveler has *different privileges and restrictions.* You "narrow" the traveler type based on their documents before letting them through.
-
+:::
 This is exactly how **Type Guards** work in TypeScript. Which checks the "document" (data type) before allowing certain operations.
 
 ## Type Narrowing Techniques
 
 ### 1. `typeof` Operator - Narrowing Primitive Types
 Used to check if a value is a `string`, `number`, `boolean`, or `symbol`.
-```ts title="TypeScript"
+```ts
 function printLength(value: string | number) {
   if (typeof value === "string") {
     console.log(`Length of string: ${value.length}`); // Type narrowed to 'string'
@@ -181,7 +188,7 @@ TypeScript automatically narrows, based on `typeof`.
 
 ### 2. `instanceof` Operator - Narrowing Object Types
 Used to check if an object belongs to a particular class.
-```ts title="TypeScript"
+```ts
 class Dog {
   bark() {
     console.log("Woof!");
@@ -210,7 +217,7 @@ TypeScript automatically narrows, based on `typeof`.
 
 ### 3. `in` Operator – Checking Properties in an Object
 The in operator checks if a property exists in an object.
-```ts title="TypeScript"
+```ts
 type Car = { speed: number };
 type Boat = { sail: boolean };
 
@@ -230,7 +237,7 @@ TypeScript automatically narrows, based on `typeof`.
 
 ### 4. Custom Type Guards – User-Defined Type Checking
 A custom type guard is a function that returns `true` or `false` based on type-checking logic.
-```ts title="TypeScript"
+```ts
 type Fish = { swim: () => void };
 type Bird = { fly: () => void };
 
@@ -240,9 +247,9 @@ function isFish(animal: Fish | Bird): animal is Fish {
 
 function moveAnimal(animal: Fish | Bird) {
   if (isFish(animal)) {
-    animal.swim(); // ✅ TypeScript now knows it's a Fish
+    animal.swim(); // TypeScript now knows it's a Fish
   } else {
-    animal.fly();  // ✅ TypeScript now knows it's a Bird
+    animal.fly();  // TypeScript now knows it's a Bird
   }
 }
 

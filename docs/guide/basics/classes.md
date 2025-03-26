@@ -2,26 +2,31 @@
 outline: deep
 ---
 
-# Classes  
+# Classes
+
 A class is like a blueprint or a template for creating objects. It defines the properties (data) and methods (actions) that an object should have.  
 Think of a class like a recipe. It tells you what ingredients (properties) you need and how to cook (methods).  
 Let's explore the core concepts one by one!
+
 ## Class Basics
+
 In TypeScript, a class is defined using the `class` keyword just like javascript does.
 
-***Analogy:***  
+::: tip Analogy
 
-*Imagine a blueprint for a house. The blueprint tell you:*
-- *What the house will have (like doors, windows and rooms).*
-- *What actions you can perform (like opening doors or turning on lights).*
+_Imagine a blueprint for a house. The blueprint tell you:_
 
-*Once you have the blueprint, you can build as many houses as you want, all following the same design.!*  
+- _What the house will have (like doors, windows and rooms)._
+- _What actions you can perform (like opening doors or turning on lights)._
 
+_Once you have the blueprint, you can build as many houses as you want, all following the same design.!_  
+:::
 Let's see this in code:
-```ts title="TypeScript"
+
+```ts
 class House {
-  rooms: number; 
-  color: string; 
+  rooms: number;
+  color: string;
 
   constructor(rooms: number, color: string) {
     this.rooms = rooms;
@@ -29,7 +34,9 @@ class House {
   }
 
   describe() {
-    console.log(`This house has ${this.rooms} rooms and is painted ${this.color}.`);
+    console.log(
+      `This house has ${this.rooms} rooms and is painted ${this.color}.`
+    );
   }
 }
 
@@ -37,22 +44,26 @@ class House {
 const myHouse = new House(3, "blue");
 myHouse.describe();
 ```
-```bash title="Output"
+
+```bash
 This house has 3 rooms and is painted blue.
 ```
-**Explanation:**
+
+### How Classes are made
+
 - **Class:** Which is the blueprint (House).
 - **Properties:** Which is rooms and color (House characteristics).
 - **Constructor:** Which is the function that builds the house.
-- **Method:** `describe()` Which tells you about the house (note: you can write anything instead of *describe*).  
+- **Method:** `describe()` Which tells you about the house (note: you can write anything instead of _describe_).
 
 See another example:
-```ts title="TypeScript"
+
+```ts
 class Person {
   name: string; // these are properties
   age: number; // these are properties
 
-  // Constructor: Initializes object properties to build the object 
+  // Constructor: Initializes object properties to build the object
   constructor(name: string, age: number) {
     this.name = name;
     this.age = age;
@@ -60,30 +71,38 @@ class Person {
 
   // Method: A function inside a class to represent the details or the output
   greet() {
-    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+    console.log(
+      `Hello, my name is ${this.name} and I am ${this.age} years old.`
+    );
   }
 }
 
 // Creating an object from the class
 const person1 = new Person("Alice", 25);
-person1.greet(); 
+person1.greet();
 ```
-```bash title="Output"
+
+```bash
 Hello, my name is Alice and I am 25 years old.
 ```
-As simple as that !  
 
-## Public, Private, and Protected Modifiers  
+As simple as that !
+
+## Public, Private, and Protected Modifiers
+
 In TypeScript, you can control how accessible the class properties and methods are using access modifiers:
 
-- **Public**: Accessible from anywhere/anyone (default). *For example: Main door of a house which can be accessed by anyone.*
-- **Private**: Accessible only within the class itself. *For example: The owner of the house can access in only. (ike a bedroom).*
-- **Protected**: Accessible within the class and its subclasses. *For example: Only family members can access it (like a family room, dining, drawing room etc)* 
+- **Public**: Accessible from anywhere/anyone (default). _For example: Main door of a house which can be accessed by anyone._
+- **Private**: Accessible only within the class itself. _For example: The owner of the house can access in only. (ike a bedroom)._
+- **Protected**: Accessible within the class and its subclasses. _For example: Only family members can access it (like a family room, dining, drawing room etc)_
 
-Let’s break them down!  
-### Public (Default)  
+Let’s break them down!
+
+### Public (Default)
+
 Public properties and methods can be accessed from anywhere. `public` keyword is used to make a public blueprint or you can make public blueprint without writing public itself.
-```ts title="TypeScript"
+
+```ts
 class Person {
   public name: string;
 
@@ -97,18 +116,24 @@ class Person {
 }
 
 const person = new Person("Alice");
-console.log(person.name); // ✅ Accessible
-person.greet();           // ✅ Accessible
+console.log(person.name); // Accessible
+person.greet(); // Accessible
 ```
+
 ```bash title="Output"
 Alice
 Hello, my name is Alice.
 ```
-***Analogy:** Public is like car horn, anyone nearby can hear it. Or it is like main door of the house, anyone can access it.*  
 
-### Private  
+::: tip Analogy
+Public is like car horn, anyone nearby can hear it. Or it is like main door of the house, anyone can access it.
+:::
+
+### Private
+
 Private properties and methods can only be accessed inside the class itself. `private` keyword is used to make a class private.
-```ts title="TypeScript"
+
+```ts
 class BankAccount {
   private balance: number;
 
@@ -127,20 +152,24 @@ class BankAccount {
 }
 
 const account = new BankAccount(1000);
-account.deposit(500);     // ✅ Works
-// account.balance = 2000; // ❌ Error: Property 'balance' is private
-// account.showBalance();  // ❌ Error: Method 'showBalance' is private
+account.deposit(500); // Works
+// account.balance = 2000; // Error: Property 'balance' is private
+// account.showBalance();  // Error: Method 'showBalance' is private
 
 // Output:
 // Deposited $500. New balance: $1500
 // (Deposit is public so it can be accessed by everyone)
-
 ```
-***Analogy:** Private is like the engine of a car. You can't access it directly while driving. You can only control it through the car's interface (by pressing the accelerator). Or it is like your bedroom. No one can go inside unless you let them!*
 
-### Protected  
+::: tip Analogy
+Private is like the engine of a car. You can't access it directly while driving. You can only control it through the car's interface (by pressing the accelerator). Or it is like your bedroom. No one can go inside unless you let them!
+:::
+
+### Protected
+
 Protected properties and methods can ony be accessed within the class and its subclasses.
-```ts title="TypeScript"
+
+```ts
 class Animal {
   protected sound: string;
 
@@ -155,22 +184,27 @@ class Animal {
 
 class Dog extends Animal {
   public bark() {
-    this.makeSound(); // ✅ Accessible in subclass
+    this.makeSound(); // Accessible in subclass
   }
 }
 
 const dog = new Dog("bark");
-dog.bark(); // ✅ Works
-// dog.makeSound(); // ❌ Error: 'makeSound' is protected
+dog.bark(); // Works
+// dog.makeSound(); // Error: 'makeSound' is protected
 
 // Output:
 // The animal makes a bark sound.
 ```
-***Analogy:** Protected is like the gearbox of a car. A mechanic (subclass) can access it, but you can't directly touch it while driving. Or it is like a family room. Where only family members (subclass) can enter, but strangers can't*
 
-## Readonly Properties  
+::: tip Analogy
+Protected is like the gearbox of a car. A mechanic (subclass) can access it, but you can't directly touch it while driving. Or it is like a family room. Where only family members (subclass) can enter, but strangers can't.
+:::
+
+## Readonly Properties
+
 A readonly properly can only be set once. Either when declared or in the constructor.
-```ts title="TypeScript"
+
+```ts
 class Book {
   readonly title: string;
 
@@ -180,26 +214,30 @@ class Book {
 }
 
 const book = new Book("The Great Gatsby");
-console.log(book.title); // ✅ Can read
-// book.title = "New Title"; // ❌ Error: Cannot assign to 'title' because it is a read-only property
+console.log(book.title); // Can read
+// book.title = "New Title"; // Error: Cannot assign to 'title' because it is a read-only property
 
 // Output:
 // The Great Gatsby
 ```
-***Analogy:** Readonly is like a car's VIN (Vehicle Identification Number). It's set when the car is made and cannot be changed. Or it is like house address. You can only read it, but you can't change the address after the house is built*  
+
+::: tip Analogy
+Readonly is like a car's VIN (Vehicle Identification Number). It's set when the car is made and cannot be changed. Or it is like house address. You can only read it, but you can't change the address after the house is built.
+:::
 
 ## When to Use What?
+
 - Use `public`: For properties/methods you want accessible to everywhere.
 - Use `private`: For sensitive data or properties/methods that should be hidden from the outside.
 - Use `protected`: For properties/methods that should only be accessed in subclass.
 - Use `readonly`: For properties that should never change after being set once.
 
-
 ## Summary
-| Feature    | Explanation                     | Analogy 1         | Analogy 2         |
-|-----------|---------------------------------|-------------------|-------------------|
-| **Class**    | Blueprint for creating objects | House blueprint   | Car assembly blueprint |
-| **Public**   | Accessible anywhere           | Main door        | Car horn          |
-| **Private**  | Accessible only inside the class | Bedroom          | Car engine        |
+
+| Feature       | Explanation                        | Analogy 1       | Analogy 2                            |
+| ------------- | ---------------------------------- | --------------- | ------------------------------------ |
+| **Class**     | Blueprint for creating objects     | House blueprint | Car assembly blueprint               |
+| **Public**    | Accessible anywhere                | Main door       | Car horn                             |
+| **Private**   | Accessible only inside the class   | Bedroom         | Car engine                           |
 | **Protected** | Accessible in class and subclasses | Family room     | Car gearbox (accessible to mechanic) |
-| **Readonly** | Can only be set once         | House address    | Car VIN           |
+| **Readonly**  | Can only be set once               | House address   | Car VIN                              |
