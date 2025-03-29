@@ -5,6 +5,20 @@ editLink: false
 # Core-Typescript
 Welcome to Core-Typescript, your comprehensive resource for mastering TypeScript, designed to cater to learners from all backgrounds, whether you're starting from scratch or aiming to deepen your existing programming knowledge.
 
+## Why TypeScript ?
+
+TypeScript has emerged as the fastest growing programming language in recent years. Here are the key points regarding its usage and developer interest:
+- **Rapid Growth**: Over the past five years, TypeScript usage has increased dramatically—from 12% in 2017 to 34% in 2022—making it the fastest growing language in that period.
+- **Enterprise Appeal**: Its rise is largely driven by large-scale JavaScript developers who favor TypeScript for its enhanced project scalability, improved collaboration, and better code maintainability.
+- **Complementary Role**: While JavaScript remains the most popular language (with about 65% of developers using it according to the JetBrains State of Developer Ecosystem 2022 report), TypeScript serves as an appealing, type-safe alternative that addresses some of JavaScript's limitations.
+- **Market Interest**: The strong interest in TypeScript reflects a broader trend where developers and organizations are increasingly prioritizing code quality and long-term maintainability, which static typing and modern tooling provided by TypeScript facilitate.
+
+<DataComparison />
+
+JavaScript remains the dominant language in web development, widely used for frontend (86%) and backend (34%). While TypeScript users are fewer, its adoption is growing rapidly, with backend usage surpassing JavaScript (43%). TypeScript's popularity is rising due to its type safety and scalability, making it a preferred choice for enterprise applications. Though JavaScript still leads in areas like mobile apps and graphics, the shift toward TypeScript indicates a strong future for structured, large-scale development.
+
+***Source:*** [JetBrains Blog](https://blog.jetbrains.com/webstorm/2024/02/js-and-ts-trends-2024/), [Cloud Data Insights](https://www.clouddatainsights.com/typescript-fastest-growing-programming-language-javascript-most-popular/)
+
 ## Overview of the whole learning path
 Our structured curriculum guides you through the multifaceted world of TypeScript:
 - **Foundational Concepts**: Begin with the basics, understanding TypeScript's syntax, types, and core principles.
@@ -44,6 +58,7 @@ Together, we are committed to providing a comprehensive and engaging learning jo
 
 <script setup>
 import D3Tree2 from '../.vitepress/theme/components/D3Tree2.vue'
+import DataComparison from '../.vitepress/theme/components/DataComparison.vue'
 import { VPTeamMembers } from 'vitepress/theme'
 
 const members = [
