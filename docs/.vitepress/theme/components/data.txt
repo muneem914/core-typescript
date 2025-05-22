@@ -1,4 +1,4 @@
-<!-- 
+<!--  previous version of code editor
 <template>
     <div class="playground-container">
       <div class="editor-section">
