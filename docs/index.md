@@ -14,16 +14,11 @@ hero:
       text: Get Started
       link: /guide/core-typescript
     - theme: alt
+      text: Quickstart
+      link: /guide/what-is-typescript
+    - theme: alt
       text: GitHub
       link: https://github.com/muneem914/core-typescript
-
-# features:
-#   - title: Feature A
-#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-#   - title: Feature B
-#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-#   - title: Feature C
-#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 
 features:
   - title: Focused on content

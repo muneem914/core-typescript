@@ -1,19 +1,6 @@
 import { defineConfig } from 'vitepress';
 
-// import path from 'path'
-// import { fileURLToPath } from 'url'
-
-// const __filename = fileURLToPath(import.meta.url)
-// const __dirname = path.dirname(__filename)
-
 export default defineConfig({
-  // vite: {
-  //   resolve: {
-  //     alias: {
-  //       'monaco-editor': path.resolve(__dirname, '../../node_modules/monaco-editor')
-  //     }
-  //   }
-  // },
   title: "Core-Typescript",
 
   description: "A typescript learning platform",
@@ -28,11 +15,9 @@ export default defineConfig({
     },
     nav: [
       { text: 'Home', link: '/' },
-      // { text: 'Guide', link: '/guide' },
-      { text: 'Blog', link: '/blog' },
-      { text: 'Compiler-testing', link: '/testing' },
-      { text: 'About Us', link: '/about' },
-      { text: 'Contact Us', link: '/contact' },
+      { text: 'Get Started', link: '/guide/core-typescript' },
+      { text: 'Code-Editor', link: '/code_editor' },
+      { text: 'License', link: '/license' },
     ],
 
     sidebar: [
@@ -117,15 +102,6 @@ export default defineConfig({
     editLink: {
       pattern: 'https://github.com/muneem914/core-typescript/blob/main/docs/:path',
       text: 'Edit this page on GitHub'
-    },
-    // carbonAds:{
-    //   code: "CWYIC53U",
-    //   placement: "core-typescript"
-    // }
-  },
-  vite: {
-    ssr: {
-      noExternal: ['monaco-editor']
     }
   }
 })
